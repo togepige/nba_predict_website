@@ -4,7 +4,6 @@ gunicorn==19.6.0
 psycopg2==2.6.2
 
 whitenoise==3.2
-conda==4.2.9
 Django==1.10.4
 enum34==1.1.6
 menuinst==1.4.1
