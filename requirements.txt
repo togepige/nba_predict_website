@@ -13,4 +13,3 @@ pycrypto==2.6.1
 pymongo==3.3.0
 PyYAML==3.11
 requests==2.10.0
-ruamel-yaml===-VERSION
