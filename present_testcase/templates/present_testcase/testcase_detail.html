@@ -1,0 +1,35 @@
+<div id="testcase-parameter">
+    <h3> Parameters </h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>Time weight</th>
+                <th>Threshold</th>
+                <th>Seasons</th>
+                <th>Sampling Size</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{parameters.model}}</td>
+                <td>{{parameters.time_weight}}</td>
+                <td>{{parameters.threshold}}</td>
+                <td>{{parameters.seasons}}</td>
+                <td>{{parameters.sample_size}}</td>    
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="testcase-summary">
+    <h3>Result Summary</h3>
+    <p>Best Accuracy: {{ summaries.0.summary.accuracy }}<p>
+    <p>Best time weight: {{ summaries.0.summary.time_weight}}<p>
+    <p>Best threshold: {{ summaries.0.summary.threshold}}<p>
+</div>
+
+<div id="testcase-detail">
+    <h3>Result Detail</h3>
+    
+</div>

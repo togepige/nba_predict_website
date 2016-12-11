@@ -1,4 +1,38 @@
+{% extends "present_testcase/base.html" %}
 
-    <ul>
-        <li>12345</a></li>
-    </ul>
+{% block content %}
+
+
+<div id="testcase-container" class="row" style="">
+    <div class="col-md-2" id="testcase-table">
+        {% for testcase in testcases %}
+            <div class="testcase-button-wrapper">
+                <button type="button" class="btn btn-default btn-lg testcase-button" data-testcase-id={{testcase.id}}>
+                    {{ testcase.name }}
+                </button>
+            </div> 
+        {% endfor %}
+    </div>
+    <div class="col-md-10" id="testcase-detail-container"></div>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+<script type="application/javascript">
+    $(document).ready(function(){
+        $(".testcase-button").on('click', function(){
+            if($(this).is(".active")) return;
+            $(".testcase-button").each(function(){
+                $(this).removeClass("active")
+            });
+            $(this).addClass("active")
+            
+            $.get("detail?id=" + $(this).data("testcase-id")).done(function(res){
+                $("#testcase-detail-container").html(res)
+            })
+        });
+    });
+</script>
+{% endblock %}
