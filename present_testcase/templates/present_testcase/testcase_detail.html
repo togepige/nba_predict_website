@@ -16,7 +16,7 @@
                 <td>{{parameters.time_weight}}</td>
                 <td>{{parameters.threshold}}</td>
                 <td>{{parameters.seasons}}</td>
-                <td>{{parameters.sample_size}}</td>    
+                <td>{{parameters.sample_size}}</td>
             </tr>
         </tbody>
     </table>
@@ -24,12 +24,55 @@
 
 <div id="testcase-summary">
     <h3>Result Summary</h3>
-    <p>Best Accuracy: {{ summaries.0.summary.accuracy }}<p>
-    <p>Best time weight: {{ summaries.0.summary.time_weight}}<p>
-    <p>Best threshold: {{ summaries.0.summary.threshold}}<p>
+    <p>Best Accuracy: {{ summaries.0.summary.accuracy }}</p>
+    <p>Best time weight: {{ summaries.0.summary.time_weight}}</p>
+    <p>Best threshold: {{ summaries.0.summary.threshold}}</p>
 </div>
 
 <div id="testcase-detail">
+
     <h3>Result Detail</h3>
-    
+
+    {% for detail in details %}
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" href="#{{detail.id}}" aria-expanded="true" aria-controls="{{detail.id}}">
+                    {{detail.name}}
+                </a>
+            </h4>
+        </div>
+        <div id="{{detail.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Season</th>
+                            <th>Team 1</th>
+                            <th>Team 2</th>
+                            <th>Average Weight</th>
+                            <th>Prediction</th>
+                            <th>Game Result</th>
+                            <th>Correctness</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for game in detail.games %}
+                        <tr class="{% if not game.correctness %}danger{% endif %}">
+                            <td>{{game.season}}</td>
+                            <td>{{game.team_1_name}}</td>
+                            <td>{{game.team_2_name}}</td>
+                            <td>{{game.weight_average}}</td>
+                            <td>{{game.average_prediction}}</td>
+                            <td>{{game.result}}</td>
+                            <td>{{game.correctness}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
 </div>

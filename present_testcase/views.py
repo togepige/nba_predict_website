@@ -66,12 +66,37 @@ def detail(request):
     parameters["seasons"] = json.dumps(parameters["seasons"])
 
     summaries = sorted(testcase["summaries"], key= lambda x: x["summary"]["accuracy"], reverse=True )
+    
 
+    details = []
+    i = 0
+    for summary in summaries:
+        name = "Models: {0}, Time Weight: {1}, Threshold: {2}, Accuracy: {3:.2f}".format(
+            summary["summary"]["model"],
+            str(summary["summary"]["time_weight"]),
+            str(summary["summary"]["threshold"]),
+            summary["summary"]["accuracy"]
+        )
+         
+        detail_temp = []
+        for tc in summary["testcases"]:
+            for game in tc["prediction"]:
+                game["season"] = tc["season"]
+                detail_temp.append(game)
+
+        details.append({
+            "id": "testcase-detail-" + str(i),
+            "name": name,
+            "games": detail_temp
+        })
+
+        i += 1
     context = {
         "id": id,
         "testcase": str(testcase),
         "parameters": parameters,
-        "summaries": summaries
+        "summaries": summaries,
+        "details": details
     }
     return HttpResponse(template.render(context, request))
 
