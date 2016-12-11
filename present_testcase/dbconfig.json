@@ -1,6 +1,6 @@
 {
-    "url": "localhost:27017",
-    "db": "local",
-    "username": "",
-    "password": ""
+    "url": "ds129028.mlab.com:29028",
+    "db": "nba_predict",
+    "username": "testuser",
+    "password": "password"
 }
