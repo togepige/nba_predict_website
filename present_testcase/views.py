@@ -100,3 +100,16 @@ def detail(request):
     }
     return HttpResponse(template.render(context, request))
 
+def about(request):
+
+    template = loader.get_template('present_testcase/about.html')
+    context = { }
+    return HttpResponse(template.render(context, request))
+
+def about(request):
+
+    template = loader.get_template('present_testcase/predict.html')
+    context = { }
+    return HttpResponse(template.render(context, request))
+
+

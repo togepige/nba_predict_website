@@ -29,3 +29,8 @@ body{
 .testcase-button{
     width: 100%;
 }
+
+#testcase-detail-container{
+    height: 100%;
+    overflow: auto;
+}

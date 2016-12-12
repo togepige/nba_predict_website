@@ -24,13 +24,18 @@
     $(document).ready(function(){
         $(".testcase-button").on('click', function(){
             if($(this).is(".active")) return;
+            
             $(".testcase-button").each(function(){
                 $(this).removeClass("active")
             });
             $(this).addClass("active")
             
+            $("#testcase-detail-container").html("")
+            var spiner = new Spinner().spin()
+            document.getElementById("testcase-detail-container").appendChild(spiner.el)
             $.get("detail?id=" + $(this).data("testcase-id")).done(function(res){
                 $("#testcase-detail-container").html(res)
+                spinner.stop()
             })
         });
     });
