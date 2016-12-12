@@ -106,7 +106,7 @@ def about(request):
     context = { }
     return HttpResponse(template.render(context, request))
 
-def about(request):
+def predict(request):
 
     template = loader.get_template('present_testcase/predict.html')
     context = { }
